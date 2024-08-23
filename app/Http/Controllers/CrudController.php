@@ -10,9 +10,9 @@ use \Illuminate\Support\Facades\Validator;
 
 class CrudController extends Controller
 {
-        public function __construct() {
+    public function __construct() {
 
-        }
+    }
 
     public function create() {
         return view('offers.create');
