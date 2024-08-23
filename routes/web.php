@@ -20,9 +20,9 @@ use \Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::get('/', fn() => view('welcome'));
 
 Route::group(['prefix' => LaravelLocalization::setLocale(),], function(){
-        Route::group(['prefix' => 'offers'], function () {
-            Route::get('create','CrudController@create');
-            Route::post('store','CrudController@store') -> name('offers.store');
-            Route::get('all','CrudController@getAllOffers');
-        });
+    Route::group(['prefix' => 'offers'], function () {
+        Route::get('create','CrudController@create')->name('offers.create');
+        Route::post('store','CrudController@store') -> name('offers.store');
+        Route::get('all','CrudController@getAllOffers');
+    });
 });

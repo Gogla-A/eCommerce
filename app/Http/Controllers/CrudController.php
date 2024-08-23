@@ -18,25 +18,11 @@ class CrudController extends Controller
         return view('offers.create');
     }
 
-    public function store(Request $request) {
-        $rules = [
-            'name' => 'required|max:255|unique:offers,name',
-            'detail' => 'required'
-        ];
-        $validator = Validator::make($request->all(), $rules,[
-                'name.required' => 'offer name is required.',
-                'details.required' => 'details is required.',
-        ]);
+    public function store(offerRequest $request) {
+        $data = $request->except('_token');
+        Offer::create($data);
 
-        if ($validator->fails()) {
-            return $validator->errors();
-        }
-        Offer::create([
-           'name'=>$request->name,
-            'price'=>$request->price,
-            'details'=>$request->detail,
-        ]);
-        return redirect()->to('offers.create')->withErrors($validator)->withInputs($request->all());
+        return redirect()->route('offers.create')->with(['message' => 'data stored successfully']);
    }
 public function getAllOffers()
 {

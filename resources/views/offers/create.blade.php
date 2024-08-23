@@ -13,20 +13,31 @@
                 </div>
             </div>
         </div>
-
+            @if(session()->has('message'))
+                <div class="alert alert-primary" role="alert">
+                    {{ session('message') }}
+                </div>
+            @endif
     <form method="POST" action={{route('offers.store')}}>
         @csrf
         {{--<input name="_token" value="{{csrf_token()}}">--}}
+
         <div class="form-group text-center" style="width: 400px;margin-left: 825px">
             <label for="exampleInputEmail1">Offer Name</label>
-            <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Offer Name">
+            <input type="text" name="name" class="form-control" aria-describedby="emailHelp" placeholder="Enter Offer Name">
             @error('name')
             <small class="form-text text-danger">{{$message}}</small>
             @enderror
         </div>
         <div class="form-group text-center" style="width: 400px;margin-left: 825px">
+            <label for="exampleInputPassword1">Price</label>
+            <input type="text" name="price" class="form-control" placeholder="Enter Your Price">
+            @error('price')
+            <small class="form-text text-danger">{{$message}}</small>
+            @enderror
+        </div><div class="form-group text-center" style="width: 400px;margin-left: 825px">
             <label for="exampleInputPassword1">Details</label>
-            <input type="text" class="form-control" placeholder="Enter Your Details">
+            <input type="text" name="details" class="form-control" placeholder="Enter Your Details">
             @error('details')
             <small class="form-text text-danger">{{$message}}</small>
             @enderror
