@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CrudController;
 use Illuminate\Support\Facades\Route;
+use \Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
 
 
 
@@ -14,22 +17,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-
-
 Route::get('/', fn() => view('welcome'));
 
-Route::resource('news','NewsController');
 
-Route::get('data','NewsController@getindex');
+Route::group(['prefix' => 'offers'], function () {
+    Route::group(['prefix' => LaravelLocalization::setLocale(),
+        ], function(){
 
-Route::get('example', 'ExampleController@store')->name('example.store');
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('create','CrudController@create');
+Route::post('store','CrudController@store') -> name('offers.store');
+Route::get('all','CrudController@getAllOffers');
+    });
+});
