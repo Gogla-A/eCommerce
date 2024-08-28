@@ -24,18 +24,21 @@ class offerRequest extends FormRequest
         return [
             'name' => 'required|max:255|unique:offers,name',
             'price' => 'required|numeric',
+            'photo' => 'required|',
             'details' => 'required|max:255'
         ];
     }
 
     public function messages(): array {
         return [
-          'name.required' => 'offer name is required.',
-            'name.unique' => 'offer name already exists.',
-            'price.required' => 'price is required.',
-            'price.numeric' => 'price must be a number.',
-            'details.required' => 'details is required.',
-            'details.max' => 'details must be less than 255 characters.',
+          'name.required' => __('messages.Offer Name Is Required'),
+            'name.unique' => __('messages.Already exists'),
+          'photo.required' => __('messages.Offer Photo Is Required'),
+            'photo.unique' => __('messages.Already exists'),
+            'price.required' =>  __('messages.Offer Price Is Required'),
+            'price.numeric' => __('messages.Must be a number'),
+            'details.required' =>  __('messages.Offer Details Are Required'),
+            'details.max' => __('messages.Must be less than 255 characters'),
         ];
     }
 }
