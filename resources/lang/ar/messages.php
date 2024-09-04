@@ -23,7 +23,7 @@ return [
     'Submit' => 'حفـــظ',
     'Offer Name Is Required' => 'إســم العــرض مطلـوب',
     'Offer Price Is Required' => 'سعــر العـرض مطلـوب',
-'Offer Details Are Required' => 'تفاصيـل العـرض مطلـوبة',
+    'Offer Details Are Required' => 'تفاصيـل العـرض مطلـوبة',
     'Must be a number' => 'يجب أن يكون رقم',
     'Must be less than 255 characters' => 'يجب ألا يتعدى 255 حرف',
     'Already exists' => 'إسم العرض موجود بالفعل',
@@ -33,6 +33,8 @@ return [
     'Edit The offer'=>'تعديل العـرض',
     'Show All Offers'=>'إظهار جميع العروض',
     'Choose Offer Photo'=>'إختر صورة العرض',
-
-    'delete'=>'حذف'
-];
+    'destroy'=>'حذف',
+    'delete'=>'حذف',
+    'Ajax Destroy'=>'حذف أجاكس',
+    'Ajax Update'=>'تعديل أجاكس'
+    ];

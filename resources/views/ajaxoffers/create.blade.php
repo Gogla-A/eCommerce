@@ -7,6 +7,9 @@
                     <h1 style="margin-top: 100px">{{__('messages.Make your offer')}}</h1>
                 </div>
             </div>
+            <div class="alert alert-success" id="success_msg" style="display: none;">
+                Data Updated Successfully
+            </div>
         </div>
         @if(session()->has('message'))
             <div class="alert alert-primary mb-3" role="alert" style="width: 400px;text-align: center;margin-left: 560px;}">
@@ -55,18 +58,26 @@
 @stop
 @section('scripts')
     <script>
-        $(document).on('click',#save_offers,function(e){
+        $(document).on('click','#save_offer',function(e){
             e.preventDefault();
             var formData = new FormData($('#offerForm')[0]);
 
             $.ajax({
-                type: "POST",
+                type: "post",
                 enctype: 'multipart/form-data',
                 url: "{{ route('ajax.offers.store') }}",
                 data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
                 success: function (data) {
-                },
-                error: function (reject) {
+
+                    if(data.status == true){
+                        $('#success_msg').show();
+                    }
+
+
+                }, error: function (reject) {
                 }
             })
         });

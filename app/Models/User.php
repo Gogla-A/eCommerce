@@ -19,6 +19,7 @@ protected $table = 'users';
      */
     protected $fillable = [
         'name',
+        'age',
         'email',
         'password',
     ];

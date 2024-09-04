@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Offers;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\offerRequest;
 use App\Models\Offer;
 use Illuminate\Http\Request;

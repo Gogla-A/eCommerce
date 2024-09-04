@@ -35,8 +35,10 @@ return [
     'Show All Offers'=>'Show All Offers',
     'Choose Offer Photo'=>'Choose Offer Photo',
     'Offer Photo'=>'Offer Photo',
+    'destroy'=>'Destroy',
     'delete'=>'Delete',
-
+    'Ajax Update'=>'Ajax Update',
+    'Ajax Destroy'=>'Ajax Destroy',
 
 
 
