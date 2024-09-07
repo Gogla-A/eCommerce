@@ -20,6 +20,7 @@ protected $table = 'users';
     protected $fillable = [
         'name',
         'age',
+        'mobile',
         'email',
         'password',
     ];
@@ -42,4 +43,13 @@ protected $table = 'users';
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    ###################### Start Relations #####################
+    public function phone()
+    {
+        return $this-> hasOne('App\Models\Phone', 'user_id');
+    }
+
+    ###################### End Relations #####################
+
 }

@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="alert alert-success" id="success_msg" style="display: none;">
-               Data Updated Successfully
+                Data Updated Successfully
             </div>
         </div>
         @if(session()->has('message'))

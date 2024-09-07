@@ -17,10 +17,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),], function(){
         Route::post('update/{offer_id}','Offers\UpdateController@updateOffer') -> name('offers.update');
         Route::get('delete/{offer_id}', 'Offers\DeleteController@delete')->name('offers.delete');
         Route::get('all','Offers\AllController@getAllOffers');
+
+        Route::get('all-inactive-offers','Offers\AllController@getAllInactiveOffers');
     });
 });
 
-############### ajax ###########
+################################### Start Ajax ###################################
+
 Route::group(['prefix' => 'ajax-offers'],function (){
     Route::get('create', 'OfferController@create');
     Route::post('store', 'OfferController@store')->name('ajax.offers.store');
@@ -30,8 +33,10 @@ Route::group(['prefix' => 'ajax-offers'],function (){
     Route::post('update', 'AjaxOffers\UpdateController@update')->name('ajax.offers.update');
 });
 
+#################################### End Ajax ###################################
+                                //////////////////
+#################################### Start Auth #################################
 
-###############Auth############
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -50,5 +55,40 @@ Route::get('admin','Auth\CustomAuthController@admin')->middleware('auth:admin')-
 Route::get('admin/login', 'Auth\CustomAuthController@adminLogin')-> name('admin.login');
 Route::post('admin/login', 'Auth\CustomAuthController@checkAdminLogin')-> name('save.admin.login');
 
+#################################### End Auth #################################
+                               ////////////////////
+#################################### Start Relation Routes #################################
+
+Route::get('has-one','Relations\RelationsController@hasOneRelation');
+
+Route::get('has-many','Relations\RelationsController@hasManyRelation');
+
+Route::get('hospitals','Relations\RelationsController@hospitals');
+
+Route::get('doctors/{hospital_id}','Relations\RelationsController@doctors')->name('hospital.doctors');
+
+#################################### End Relation Routes #################################
+                              ///////////////////////////////
+#################################### Start Many To Many Relation Routes #################################
+
+Route::get('doctors-services','Relations\RelationsController@doctorServices');
+Route::get('service-doctors','Relations\RelationsController@serviceDoctors');
+
+Route::get('doctors/services/{doctor_id}','Relations\RelationsController@getDoctorServicesById')->name('doctors.services');
+Route::post('saveServices-to-doctor','Relations\RelationsController@saveServicesToDoctors')-> name('save.doctors.services');
 
 
+#################################### End Many To Many Relation Routes #################################
+                               //////////////////////////////////////////////
+#################################### Start Has One Through Relation Routes #################################
+
+Route::get('has-one-through','Relations\RelationsController@getPatientDoctor');
+Route::get('has-many-through','Relations\RelationsController@getCountryDoctor');
+
+#################################### Start Has One Through Relation Routes #################################
+                              ///////////////////////////////////////////////////
+################################### Start Accessors And Mutators ###########################################
+
+Route::get('accessors', 'Relations\RelationsController@getDoctors');
+
+################################### End Accessors And Mutators ###########################################

@@ -16,7 +16,7 @@
                 {{ session('message') }}
             </div>
         @endif
-        <form method="POST" id="offerForm" action="" enctype="multipart/form-data">
+        <form method="POST" id="offerForm" enctype="multipart/form-data">
             @csrf
             {{--<input name="_token" value="{{csrf_token()}}">--}}
 
@@ -51,7 +51,7 @@
                 <button id="save_offer" class="btn btn-primary">{{__('messages.Submit')}}</button>
             </div>
             <div class="form-group text-center">
-                <a href="{{url('offers/all')}}" class="btn btn-success" style="margin-left: -25px">{{__('messages.Show All Offers')}}</a>
+                <a href="{{url('ajax-offers/all')}}" class="btn btn-success" style="margin-left: -25px">{{__('messages.Show All Offers')}}</a>
             </div>
         </form>
     </div>
@@ -62,6 +62,7 @@
             e.preventDefault();
             var formData = new FormData($('#offerForm')[0]);
 
+            console.log("{{ route('ajax.offers.store') }}");
             $.ajax({
                 type: "post",
                 enctype: 'multipart/form-data',

@@ -8,7 +8,7 @@ use Auth;
 class CustomAuthController extends Controller
 {
 
-    public function adualt()
+    public function adult()
     {
         return view('customAuth.index');
     }
@@ -23,7 +23,6 @@ class CustomAuthController extends Controller
     {
         return view('admin');
     }
-
 
     public function adminLogin()
     {
@@ -43,6 +42,4 @@ class CustomAuthController extends Controller
         }
         return back()->withInput($request->only('email'));
     }
-
-
 }

@@ -28,7 +28,7 @@
         @endforeach
         </tbody>
     </table>
-    @stop
+@stop
 @section('scripts')
     <script>
         $(document).on('click', '.delete_btn', function(e){
@@ -55,4 +55,3 @@
 
     </script>
 @stop
-
